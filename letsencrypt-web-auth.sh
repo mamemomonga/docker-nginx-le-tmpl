@@ -23,16 +23,14 @@ if [ -z "${ADMIN_EMAIL:-}" ]; then
 	usage
 fi
 
-# if [ -e "./conf.d/$DOMAIN_NAME.conf" ]; then
-# 	echo "$DOMAIN_NAME.conf already exists."
-# 	exit 1
-# fi
+if [ -e "./conf.d/$DOMAIN_NAME.conf" ]; then
+	echo "$DOMAIN_NAME.conf already exists."
+	exit 1
+fi
 
 echo "DOMAIN_NAME: $DOMAIN_NAME"
 echo "ADMIN_EMAIL: $ADMIN_EMAIL"
 echo
-
-
 
 mkdir -p $LETSENCRYPT_DIR/webroot/$DOMAIN_NAME/webroot
 
