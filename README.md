@@ -6,7 +6,7 @@ Let's EncryptによるWeb認証による証明書取得機能つきです。
 
 nginx.conf が /etc/nginx/nginx.conf, conf.d が /etc/nginx/conf.d としてマウントされます。
 
-アクセスログ・エラーログは log ディレクトリに保存されます。
+アクセスログ・エラーログは起動時に log ディレクトリが作成され、こちらに保存されます。( コンテナ内部では /log )
 
 # 必要なもの
 
@@ -55,7 +55,7 @@ Congratulations! Your certificate and chain have been saved at... と表示さ�
 
 取得に成功すると ./letsencrypt/etc/live/[DOMAIN_NAME]/ 以下に証明書が保存されます。
 
-証明書は提示更新しないと90日で失効します。
+証明書は定期的更新しないと90日で失効します。
 
 更新スクリプトとして letsencrypt/update.sh, cron設定として letsencrypt/cron が生成されますので、以下の方法でcronに登録してください。
 
