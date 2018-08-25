@@ -50,8 +50,9 @@ EOS
 docker-compose down
 docker-compose up -d
 
+mkdir -p $LETSENCRYPT_DIR/webroot/$DOMAIN_NAME
 docker run --rm -it \
-	-v $LETSENCRYPT_DIR/webroot:/webroot/$DOMAIN_NAME \
+	-v $LETSENCRYPT_DIR/webroot/$DOMAIN_NAME:/webroot \
 	-v $LETSENCRYPT_DIR/etc:/etc/letsencrypt \
 	certbot/certbot certonly \
 	-d $DOMAIN_NAME \
